@@ -3,13 +3,12 @@ export DEBIAN_FRONTEND=noninteractive
 export USERNAME=speed
 export USER_UID=1000
 
-# 更换 apt 源为阿里云源
-sed -i 's@//.*archive.ubuntu.com@//mirrors.aliyun.com@g' /etc/apt/sources.list
-sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
+sed -i 's@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list
+sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 apt update
-apt install -y --no-install-recommends curl wget git sudo neovim tmux less ssh zsh 
-
+apt install -y --no-install-recommends curl wget git sudo neovim tmux less ssh zsh htop nvtop
+rm -rf /var/lib/apt/lists/*
 
 useradd -m -s /usr/bin/zsh ${USERNAME}
 echo '${USERNAME} ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -22,6 +21,8 @@ echo "${USERNAME}:password" | chpasswd
 echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USERNAME}
 chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}
 chsh -s /bin/zsh ${USERNAME}
+
+cd /home/${USERNAME}
 
 # 下载 Oh My Zsh
 git clone https://gitee.com/albpeed/ohmyzsh ~/.oh-my-zsh
