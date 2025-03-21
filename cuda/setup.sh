@@ -8,6 +8,7 @@ sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 apt update
 apt install -y --no-install-recommends curl wget git sudo neovim tmux less ssh zsh htop nvtop
+apt install -y --no-install-recommends python3.10 python3.10-dev python3.10-venv python3.10-distutils python3-pip
 rm -rf /var/lib/apt/lists/*
 
 useradd -m -s /usr/bin/zsh ${USERNAME}
@@ -25,6 +26,10 @@ chsh -s /bin/zsh ${USERNAME}
 # 切换到 speed 用户并进入其主目录
 sudo -u ${USERNAME} -i bash <<EOF
 cd /home/${USERNAME}
+
+mkdir -p ~/.config/pip
+echo "[global]" > ~/.config/pip/pip.conf
+echo "index-url = https://pypi.mirrors.ustc.edu.cn/simple/" >> ~/.config/pip/pip.conf
 
 # 下载 Oh My Zsh
 git clone https://gitee.com/albpeed/ohmyzsh ~/.oh-my-zsh
