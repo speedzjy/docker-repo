@@ -22,6 +22,8 @@ echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USERNAME}
 chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}
 chsh -s /bin/zsh ${USERNAME}
 
+# 切换到 speed 用户并进入其主目录
+sudo -u ${USERNAME} -i bash <<EOF
 cd /home/${USERNAME}
 
 # 下载 Oh My Zsh
@@ -32,12 +34,13 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 git clone https://gitee.com/albpeed/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://gitee.com/albpeed/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
+# 修改 zsh 配置
 sed -i 's/plugins=(git)/plugins=(git extract zsh-autosuggestions zsh-syntax-highlighting)/' ~/.zshrc
 sed -i 's/ZSH_THEME=".*"/ZSH_THEME="ys"/' ~/.zshrc
-echo 'source $ZSH/oh-my-zsh.sh' >> ~/.zshrc
-echo 'source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ~/.zshrc
-echo 'source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
+echo 'source \$ZSH/oh-my-zsh.sh' >> ~/.zshrc
+echo 'source \$ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ~/.zshrc
+echo 'source \$ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
 
-# 修改 ys 主题，替换 %m 为 speed-zsh-docker
 # sed -i 's/%m/speed-cls-docker/g' ~/.oh-my-zsh/themes/ys.zsh-theme
+EOF
 
