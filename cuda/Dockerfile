@@ -5,5 +5,3 @@ COPY setup.sh /tmp/setup.sh
 RUN bash /tmp/setup.sh \
     && rm /tmp/setup.sh
 
-COPY src /home/user
-RUN sudo chown -R user:user /home/user
