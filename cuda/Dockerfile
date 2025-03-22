@@ -14,11 +14,13 @@ RUN apt update && \
     apt clean
 RUN rm -rf /var/lib/apt/lists/*
 
+ARG USERNAME=user
+ARG USER_UID=1000
+
 RUN useradd -m ${USERNAME} --uid=${USER_UID} \
     && usermod -aG sudo ${USERNAME} \
     && echo 'user:password' | chpasswd \
     && echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USERNAME} \
-    && chown -R ${USERNAME}:${USERNAME} ${MINICONDA_PATH} \
     && chsh -s /bin/bash ${USERNAME} \
     && service ssh start
 
