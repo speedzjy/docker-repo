@@ -12,8 +12,8 @@ for tag in "${TAGS[@]}"; do
     --build-arg CUDA_BASE=${tag} \
     ./cuda
 
-  docker push ghcr.io/${OWNER}/cuda:${tag}
+  docker push ghcr.io/${OWNER}/cuda-${tag}
 
-  docker image rm ghcr.io/${OWNER}/cuda:${tag}
+  docker image rm ghcr.io/${OWNER}/cuda-${tag}
   docker system prune -f
 done
