@@ -28,3 +28,5 @@ git clone https://gitee.com/albpeed/ohmyzsh ~/.oh-my-zsh
 git clone https://gitee.com/albpeed/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://gitee.com/albpeed/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 EOF
+
+exec su - ${USERNAME}

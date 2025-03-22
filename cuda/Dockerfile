@@ -7,6 +7,3 @@ RUN bash /tmp/setup.sh \
 
 COPY src /home/user
 RUN sudo chown -R user:user /home/user
-
-USER user
-WORKDIR /home/user
