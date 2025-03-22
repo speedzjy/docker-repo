@@ -24,10 +24,12 @@ usermod -aG sudo ${USERNAME}
 echo 'user:password' | chpasswd
 echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/${USERNAME}
 chown -R ${USERNAME}:${USERNAME} ${MINICONDA_PATH}
-chsh -s /bin/zsh ${USERNAME}
 
-sudo -u ${USERNAME} -i /bin/bash <<EOF
-sh -c "$(curl -fsSL https://install.ohmyz.sh)" "" --unattended
-git clone https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-EOF
+chsh -s /bin/bash ${USERNAME}
+# chsh -s /bin/zsh ${USERNAME}
+
+# sudo -u ${USERNAME} -i /bin/bash <<EOF
+# sh -c "$(curl -fsSL https://install.ohmyz.sh)" "" --unattended
+# git clone https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+# EOF
