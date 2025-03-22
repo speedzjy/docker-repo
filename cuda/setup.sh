@@ -11,26 +11,20 @@ sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 apt update
 apt upgrade -y
-apt install -y --no-install-recommends curl wget git sudo neovim tmux less ssh zsh htop nvtop zsh-syntax-highlighting
+apt install -y --no-install-recommends curl wget git sudo neovim tmux less ssh zsh htop nvtop
 apt install -y --no-install-recommends python3.10 python3.10-dev python3.10-venv python3.10-distutils python3-pip
 rm -rf /var/lib/apt/lists/*
-
-curl -s -o miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh
-bash miniconda.sh -b -p ${MINICONDA_PATH}
-rm miniconda.sh
 
 userdel -rf ubuntu || true
 useradd -m ${USERNAME} --uid=${USER_UID}
 usermod -aG sudo ${USERNAME}
 echo 'user:password' | chpasswd
 echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/${USERNAME}
-chown -R ${USERNAME}:${USERNAME} ${MINICONDA_PATH}
 
-chsh -s /bin/bash ${USERNAME}
-# chsh -s /bin/zsh ${USERNAME}
+chsh -s /bin/zsh ${USERNAME}
 
-# sudo -u ${USERNAME} -i /bin/bash <<EOF
-# sh -c "$(curl -fsSL https://install.ohmyz.sh)" "" --unattended
-# git clone https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-# EOF
+sudo -u ${USERNAME} -i /bin/bash <<EOF
+git clone https://gitee.com/albpeed/ohmyzsh ~/.oh-my-zsh
+git clone https://gitee.com/albpeed/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://gitee.com/albpeed/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+EOF
