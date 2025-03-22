@@ -21,7 +21,10 @@ echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/${USERNAME}
 
 chsh -s /bin/zsh ${USERNAME}
 
-sudo -u ${USERNAME} -i /bin/bash <<EOF
+# 切到user
+exec su - ${USERNAME}
+cd /home/user
+# sudo -u ${USERNAME} -i /bin/bash <<EOF
 git clone https://gitee.com/albpeed/ohmyzsh ~/.oh-my-zsh
 git clone https://gitee.com/albpeed/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://gitee.com/albpeed/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -35,4 +38,4 @@ mkdir -p /home/user/speed/rl_venv/ws
 pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
 
 ssh-keygen -t rsa -b 4096 -C "speed@docker.com" -f "$HOME/.ssh/id_rsa" -N "" -q
-EOF
+# EOF
