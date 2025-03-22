@@ -22,10 +22,10 @@ chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}
 chsh -s /bin/zsh ${USERNAME}
 
 sudo -u ${USERNAME} -i /bin/bash <<EOF
-sh -c "$(curl -fsSL https://install.ohmyz.sh)" "" --unattended
+git clone https://gitee.com/albpeed/ohmyzsh ~/.oh-my-zsh
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 git clone https://gitee.com/albpeed/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 EOF
-
 
