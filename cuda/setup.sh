@@ -31,4 +31,6 @@ python3 -m venv rl_venv && source rl_venv/bin/activate
 mkdir -p /home/user/speed/rl_venv/ws
 
 pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
+
+ssh-keygen -t rsa -b 4096 -C "speed@docker.com" -f "$HOME/.ssh/id_rsa" -N "" -q
 EOF
