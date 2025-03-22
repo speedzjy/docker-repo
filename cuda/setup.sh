@@ -1,8 +1,6 @@
 #!/bin/bash
 
 export DEBIAN_FRONTEND=noninteractive
-export MINICONDA_VERSION=latest
-export MINICONDA_PATH=/opt/miniconda
 export USERNAME=user
 export USER_UID=1000
 
@@ -27,6 +25,7 @@ sudo -u ${USERNAME} -i /bin/bash <<EOF
 git clone https://gitee.com/albpeed/ohmyzsh ~/.oh-my-zsh
 git clone https://gitee.com/albpeed/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://gitee.com/albpeed/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-EOF
 
-exec su - ${USERNAME}
+mkdir -p /home/user/speed && cd /home/user/speed
+python3 -m venv rl_venv
+EOF
