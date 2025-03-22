@@ -6,9 +6,9 @@ TAGS=(
 )
 
 for tag in "${TAGS[@]}"; do
-  docker pull ghcr.io/${OWNER}/cuda:${tag} || true
+  docker pull ghcr.io/${OWNER}/cuda-${tag} || true
 
-  docker build -t ghcr.io/${OWNER}/cuda:${tag} \
+  docker build -t ghcr.io/${OWNER}/cuda-${tag} \
     --build-arg CUDA_BASE=${tag} \
     ./cuda
 
