@@ -8,8 +8,7 @@ sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 apt update
 apt upgrade -y
-apt install -y --no-install-recommends curl wget git sudo neovim tmux less ssh zsh htop nvtop zsh-syntax-highlighting
-apt install -y --no-install-recommends python3.10 python3.10-dev python3.10-venv python3.10-distutils python3-pip
+apt install -y --no-install-recommends curl wget git sudo neovim tmux less ssh zsh htop nvtop zsh-syntax-highlighting python3.10 python3.10-dev python3.10-venv python3.10-distutils python3-pip
 rm -rf /var/lib/apt/lists/*
 
 userdel -rf ubuntu || true
@@ -24,8 +23,7 @@ chsh -s /bin/zsh ${USERNAME}
 sudo -u ${USERNAME} -i /bin/bash <<EOF
 git clone https://gitee.com/albpeed/ohmyzsh ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-git clone https://gitee.com/albpeed/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone https://gitee.com/albpeed/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://gitee.com/albpeed/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 EOF
 

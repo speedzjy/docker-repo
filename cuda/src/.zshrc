@@ -5,7 +5,7 @@ ZSH_THEME="ys"
 HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-autocomplete)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 zstyle ':omz:update' mode auto
 source $ZSH/oh-my-zsh.sh
 
