@@ -26,8 +26,10 @@ git clone https://gitee.com/albpeed/ohmyzsh ~/.oh-my-zsh
 git clone https://gitee.com/albpeed/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://gitee.com/albpeed/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-mkdir -p /home/user/speed && cd /home/user/speed
-python3 -m venv rl_venv && source rl_venv/bin/activate
+mkdir -p /home/user/speed
+cd /home/user/speed
+python3 -m venv rl_venv
+source rl_venv/bin/activate
 mkdir -p /home/user/speed/rl_venv/ws
 
 pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
