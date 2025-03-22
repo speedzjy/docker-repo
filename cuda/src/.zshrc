@@ -26,3 +26,5 @@ alias UNSET_PROXY="unset http_proxy https_proxy no_proxy"
 if [[ $- =~ i ]] && [[ -z "$TMUX" ]]; then
     tmux attach-session -t main || tmux new-session -s main
 fi
+
+alias fjspb="cd ~/speed/rl_venv && source ./bin/activate && cd ws/"
