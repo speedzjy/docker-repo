@@ -10,7 +10,7 @@ for tag in "${TAGS[@]}"; do
 
   docker build -t ghcr.io/${OWNER}/cuda-${tag} \
     --build-arg CUDA_BASE=${tag} \
-    ./cuda
+    ./cuda_pytorch
 
   docker push ghcr.io/${OWNER}/cuda-${tag}
 
