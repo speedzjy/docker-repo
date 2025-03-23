@@ -12,7 +12,7 @@ fi
 IP_ADDRESS=$1
 REMOTE_USER="speed"
 REMOTE_PATH="Downloads/cplex_studio2211.linux_x86_64.bin"
-LOCAL_PATH="~/Downloads/cplex_studio2211.linux_x86_64.bin"
+LOCAL_PATH="./cplex_studio2211.linux_x86_64.bin"
 
 echo "即将从 ${REMOTE_USER}@${IP_ADDRESS}:${REMOTE_PATH} 拷贝文件到${LOCAL_PATH}..."
 # 执行 SCP 远程拷贝

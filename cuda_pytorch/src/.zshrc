@@ -23,9 +23,9 @@ setopt EXTENDED_HISTORY
 alias SET_PROXY="export http_proxy=\"http://proxy.lab.tiankaima.cn:7890\" https_proxy=\$http_proxy no_proxy=\"localhost, 127.0.0.1, ::1, *.cn\""
 alias UNSET_PROXY="unset http_proxy https_proxy no_proxy"
 
-if [[ $- =~ i ]] && [[ -z "$TMUX" ]]; then
-    tmux attach-session -t main || tmux new-session -s main
-fi
+# if [[ $- =~ i ]] && [[ -z "$TMUX" ]]; then
+#     tmux attach-session -t main || tmux new-session -s main
+# fi
 
 export PATH=$PATH:~/cplex/cplex/bin/x86-64_linux:~/cplex/cpoptimizer/bin/x86-64_linux
 alias fjspb="cd ~/speed/rl_venv && source ./bin/activate && cd ws/"
