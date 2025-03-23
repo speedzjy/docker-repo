@@ -27,4 +27,5 @@ if [[ $- =~ i ]] && [[ -z "$TMUX" ]]; then
     tmux attach-session -t main || tmux new-session -s main
 fi
 
+export PATH=$PATH:~/cplex/cplex/bin/x86-64_linux:~/cplex/cpoptimizer/bin/x86-64_linux
 alias fjspb="cd ~/speed/rl_venv && source ./bin/activate && cd ws/"
