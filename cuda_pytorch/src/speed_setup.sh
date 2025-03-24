@@ -20,4 +20,7 @@ pip install --upgrade pip
 
 # 生成 SSH 密钥
 mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -C "speed@docker.com" -f ~/.ssh/id_rsa -N "" -q
+cp -r /data/cls1-srv2-pool/.ssh/* ~/.ssh/
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_rsa
+chmod 644 ~/.ssh/id_rsa.pub
