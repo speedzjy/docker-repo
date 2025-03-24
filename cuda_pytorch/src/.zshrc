@@ -27,5 +27,5 @@ alias UNSET_PROXY="unset http_proxy https_proxy no_proxy"
 #     tmux attach-session -t main || tmux new-session -s main
 # fi
 
-export PATH=$PATH:~/cplex/cplex/bin/x86-64_linux:~/cplex/cpoptimizer/bin/x86-64_linux
-alias fjspb="cd ~/speed/rl_venv && source ./bin/activate && cd ws/"
+export PATH=$PATH:/data/cls1-srv2-pool/cplex/cplex/bin/x86-64_linux:/data/cls1-srv2-pool/cplex/cpoptimizer/bin/x86-64_linux
+alias fjspb="cd /data/cls1-srv2-pool/speed/rl_venv && source ./bin/activate && cd ws/"

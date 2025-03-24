@@ -19,8 +19,8 @@ pip install tensorboard gym==0.19.0 colorama==0.4.6 numpy==1.26.4 pandas==2.2.3 
 pip install --upgrade pip
 
 # 生成 SSH 密钥
-mkdir -p ~/.ssh
-cp -r /data/cls1-srv2-pool/.ssh/* ~/.ssh/
-chmod 700 ~/.ssh
-chmod 600 ~/.ssh/id_rsa
-chmod 644 ~/.ssh/id_rsa.pub
+mkdir -p /home/user/.ssh
+cp -r /data/cls1-srv2-pool/.ssh/* /home/user/.ssh/
+chmod 700 /home/user/.ssh
+chmod 600 /home/user/.ssh/id_rsa
+chmod 644 /home/user/.ssh/id_rsa.pub
