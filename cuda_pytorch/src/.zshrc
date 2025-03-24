@@ -10,10 +10,10 @@ zstyle ':omz:update' mode auto
 source $ZSH/oh-my-zsh.sh
 
 # zsh:
-bindkey "\e[H" beginning-of-line
-bindkey "\e[F" end-of-line
-bindkey '^X' create_completion
-zle -N create_completion
+# bindkey "\e[H" beginning-of-line
+# bindkey "\e[F" end-of-line
+# bindkey '^X' create_completion
+# zle -N create_completion
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000000000
 export SAVEHIST=1000000000
