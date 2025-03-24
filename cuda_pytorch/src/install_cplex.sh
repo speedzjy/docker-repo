@@ -3,37 +3,33 @@
 # Ensure the script runs in interactive mode
 set -e
 
-# Check if an IP address is provided
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <IPv4 Address>"
+# Define the local installation file path
+SOURCE_PATH="/data/cls1-srv2-pool/cplex_studio2211.linux_x86_64.bin"
+DEST_PATH="./cplex_studio2211.linux_x86_64.bin"
+
+# Check if the source file exists
+if [ ! -f "$SOURCE_PATH" ]; then
+    echo "Error: Installation file $SOURCE_PATH does not exist. Please check the path."
     exit 1
 fi
 
-IP_ADDRESS=$1
-REMOTE_USER="speed"
-REMOTE_PATH="Downloads/cplex_studio2211.linux_x86_64.bin"
-LOCAL_PATH="./cplex_studio2211.linux_x86_64.bin"
+# Copy the file to the current directory
+echo "Copying file: $SOURCE_PATH -> $DEST_PATH"
+cp "$SOURCE_PATH" "$DEST_PATH"
 
-echo "Copying file from ${REMOTE_USER}@${IP_ADDRESS}:${REMOTE_PATH} to ${LOCAL_PATH}..."
-# Execute SCP for remote copying
-scp "${REMOTE_USER}@${IP_ADDRESS}:${REMOTE_PATH}" "${LOCAL_PATH}"
-if [ $? -ne 0 ]; then
-    echo "SCP failed. Please check the network or permissions."
-    exit 1
-fi
+echo "File successfully copied to $DEST_PATH"
 
-echo "File successfully copied to ${LOCAL_PATH}"
+# Modify permissions to make the file executable
+chmod +x "$DEST_PATH"
+echo "Permissions updated: $DEST_PATH is now executable."
 
-# Modify permissions
-chmod +x "${LOCAL_PATH}"
-echo "Permissions updated: ${LOCAL_PATH} is now executable."
-
-# Execute the file
-echo "Preparing to execute ${LOCAL_PATH}..."
+# Ask for user confirmation before executing the file
+echo "Preparing to execute $DEST_PATH..."
 read -p "Confirm execution? (y/n): " execute_confirm
 if [[ "$execute_confirm" != "y" ]]; then
     echo "Execution canceled."
     exit 1
 fi
 
-"${LOCAL_PATH}"
+# Execute the installation file
+"$DEST_PATH"
