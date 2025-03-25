@@ -13,20 +13,20 @@ apt install -y --no-install-recommends curl wget git sudo neovim tmux less ssh z
 apt install -y --no-install-recommends python3.10 python3.10-dev python3.10-venv python3.10-distutils python3-pip
 rm -rf /var/lib/apt/lists/*
 
-echo "LANG=zh_CN.UTF-8" | tee /etc/default/locale
-echo "LANGUAGE=zh_CN:zh" | tee -a /etc/default/locale
-echo "LC_CTYPE=zh_CN.UTF-8" | tee -a /etc/default/locale
-echo "LC_NUMERIC=zh_CN.UTF-8" | tee -a /etc/default/locale
-echo "LC_TIME=zh_CN.UTF-8" | tee -a /etc/default/locale
-echo "LC_COLLATE=zh_CN.UTF-8" | tee -a /etc/default/locale
-echo "LC_MONETARY=zh_CN.UTF-8" | tee -a /etc/default/locale
-echo "LC_MESSAGES=zh_CN.UTF-8" | tee -a /etc/default/locale
-echo "LC_PAPER=zh_CN.UTF-8" | tee -a /etc/default/locale
-echo "LC_NAME=zh_CN.UTF-8" | tee -a /etc/default/locale
-echo "LC_ADDRESS=zh_CN.UTF-8" | tee -a /etc/default/locale
-echo "LC_TELEPHONE=zh_CN.UTF-8" | tee -a /etc/default/locale
-echo "LC_MEASUREMENT=zh_CN.UTF-8" | tee -a /etc/default/locale
-echo "LC_IDENTIFICATION=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LANG=zh_CN.UTF-8
+LANGUAGE=zh_CN:zh
+LC_CTYPE=zh_CN.UTF-8
+LC_NUMERIC=zh_CN.UTF-8
+LC_TIME=zh_CN.UTF-8
+LC_COLLATE=zh_CN.UTF-8
+LC_MONETARY=zh_CN.UTF-8
+LC_MESSAGES=zh_CN.UTF-8
+LC_PAPER=zh_CN.UTF-8
+LC_NAME=zh_CN.UTF-8
+LC_ADDRESS=zh_CN.UTF-8
+LC_TELEPHONE=zh_CN.UTF-8
+LC_MEASUREMENT=zh_CN.UTF-8
+LC_IDENTIFICATION=zh_CN.UTF-8" | tee /etc/default/locale
 
 dpkg-reconfigure locales
 
