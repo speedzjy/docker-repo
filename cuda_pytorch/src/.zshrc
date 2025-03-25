@@ -29,5 +29,49 @@ alias UNSET_PROXY="unset http_proxy https_proxy no_proxy"
 
 setopt no_nomatch
 
+scp_fetch() {
+    if [ $# -ne 2 ]; then
+        echo "Usage: scp_fetch <IP_ADDRESS> <REMOTE_RELATIVE_PATH>"
+        return 1
+    fi
+
+    local IP="$1"
+    local REMOTE_PATH="$2"
+    local SRC_PATH="speed@${IP}:~/speedzjy/rl_venv/ws/fjspb-drl/data/${REMOTE_PATH}/"
+    local DEST_PATH="/data/cls1-srv2-pool/speed/rl_venv/ws/fjspb-drl/data/${REMOTE_PATH}/"
+
+    echo "📥 Copying files from ${SRC_PATH} to ${DEST_PATH}..."
+    scp -r "${SRC_PATH}" "${DEST_PATH}"
+
+    if [ $? -eq 0 ]; then
+        echo "✅ Copy completed successfully!"
+    else
+        echo "❌ Copy failed. Check your connection and paths."
+    fi
+}
+
+scp_push() {
+    if [ $# -ne 2 ]; then
+        echo "Usage: scp_push <IP_ADDRESS> <REMOTE_RELATIVE_PATH>"
+        return 1
+    fi
+
+    local IP="$1"
+    local REMOTE_PATH="$2"
+    local SRC_PATH="/data/cls1-srv2-pool/speed/rl_venv/ws/fjspb-drl/data/${REMOTE_PATH}/"
+    local DEST_PATH="speed@${IP}:~/speedzjy/rl_venv/ws/fjspb-drl/data/${REMOTE_PATH}/"
+
+    echo "📤 Copying files from ${SRC_PATH} to ${DEST_PATH}..."
+    scp -r "${SRC_PATH}" "${DEST_PATH}"
+
+    if [ $? -eq 0 ]; then
+        echo "✅ Copy completed successfully!"
+    else
+        echo "❌ Copy failed. Check your connection and paths."
+    fi
+}
+
+
+
 export PATH=$PATH:/data/cls1-srv2-pool/cplex/cplex/bin/x86-64_linux:/data/cls1-srv2-pool/cplex/cpoptimizer/bin/x86-64_linux
 alias fjspb="cd /data/cls1-srv2-pool/speed/rl_venv && source ./bin/activate && cd ws/fjspb-drl"
