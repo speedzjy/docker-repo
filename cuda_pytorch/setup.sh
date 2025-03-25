@@ -28,8 +28,6 @@ LC_TELEPHONE=zh_CN.UTF-8
 LC_MEASUREMENT=zh_CN.UTF-8
 LC_IDENTIFICATION=zh_CN.UTF-8" | tee /etc/default/locale
 
-dpkg-reconfigure locales
-
 userdel -rf ubuntu || true
 useradd -m ${USERNAME} --uid=${USER_UID}
 usermod -aG sudo ${USERNAME}
