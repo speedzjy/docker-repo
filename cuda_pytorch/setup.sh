@@ -9,9 +9,26 @@ sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 apt update
 apt upgrade -y
-apt install -y --no-install-recommends curl wget git sudo neovim tmux less ssh zsh htop nvtop iputils-ping
+apt install -y --no-install-recommends curl wget git sudo neovim tmux less ssh zsh htop nvtop iputils-ping locales language-pack-zh-hans
 apt install -y --no-install-recommends python3.10 python3.10-dev python3.10-venv python3.10-distutils python3-pip
 rm -rf /var/lib/apt/lists/*
+
+echo "LANG=zh_CN.UTF-8" | tee /etc/default/locale
+echo "LANGUAGE=zh_CN:zh" | tee -a /etc/default/locale
+echo "LC_CTYPE=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LC_NUMERIC=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LC_TIME=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LC_COLLATE=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LC_MONETARY=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LC_MESSAGES=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LC_PAPER=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LC_NAME=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LC_ADDRESS=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LC_TELEPHONE=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LC_MEASUREMENT=zh_CN.UTF-8" | tee -a /etc/default/locale
+echo "LC_IDENTIFICATION=zh_CN.UTF-8" | tee -a /etc/default/locale
+
+dpkg-reconfigure locales
 
 userdel -rf ubuntu || true
 useradd -m ${USERNAME} --uid=${USER_UID}
