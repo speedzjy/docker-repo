@@ -27,6 +27,7 @@ RUN apt update && \
     apt install -y --no-install-recommends ros-jazzy-desktop && \
     apt install -y --no-install-recommends ros-jazzy-rmf-dev ros-jazzy-ros-gz-bridge && \
     apt install -y --no-install-recommends ros-dev-tools && \
+    apt install -y --no-install-recommends python3-fastapi python3-socketio && \
     apt clean
 
 # # ign gazebo fortress
@@ -67,6 +68,14 @@ RUN sed -i 's/plugins=(git)/plugins=(git extract zsh-autosuggestions zsh-syntax-
 
 # 修改 ys 主题，替换 %m 为 speed-zsh-docker
 RUN sed -i 's/%m/speed-ros2/g' ~/.oh-my-zsh/themes/ys.zsh-theme
+
+# 添加环境变量和 ROS 配置到 .zshrc
+RUN echo 'export http_proxy="http://127.0.0.1:7897"' >> ~/.zshrc && \
+    echo 'export https_proxy="http://127.0.0.1:7897"' >> ~/.zshrc && \
+    echo 'export all_proxy="socks5://127.0.0.1:7897"' >> ~/.zshrc && \
+    echo 'source /opt/ros/jazzy/setup.zsh' >> ~/.zshrc && \
+    echo 'source ~/speed/rmf_ws/install/setup.zsh' >> ~/.zshrc && \
+    echo 'source /opt/ros/jazzy/share/ros2cli/environment/ros2-argcomplete.zsh' >> ~/.zshrc
 
 # 设置容器启动时默认执行的命令
 CMD ["zsh"]
