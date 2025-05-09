@@ -24,7 +24,9 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://mirrors.ustc.edu.cn/ros2/ubuntu noble main" > /etc/apt/sources.list.d/ros2-latest.list'
 RUN curl -sSL https://ghfast.top/https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | gpg --dearmor -o /usr/share/keyrings/ros-archive-keyring.gpg
 RUN apt update && \
-    apt install -y --no-install-recommends ros-jazzy-desktop ros-dev-tools && \
+    apt install -y --no-install-recommends ros-jazzy-desktop && \
+    apt install -y --no-install-recommends ros-jazzy-rmf-dev ros-jazzy-ros-gz-bridge && \
+    apt install -y --no-install-recommends ros-dev-tools && \
     apt clean
 
 # # ign gazebo fortress
